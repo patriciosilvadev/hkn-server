@@ -5,6 +5,7 @@ import { AppUser } from '@Entities';
 import { AppUserSignupRequest, AppUserResponse } from '@Payloads';
 import { AppUserMapper, AppUserMapperImpl } from '@Mappers';
 import { AppUserService, AppUserServiceImpl, AccountService, AccountServiceImpl } from '@Services';
+import logger from '../logging';
 
 @JsonController('/api/auth')
 export class AuthController {
@@ -19,6 +20,11 @@ export class AuthController {
   async signUpUser(
     @Body() appUserSignupRequest: AppUserSignupRequest
   ): Promise<AppUserResponse | undefined> {
+    logger.info({
+      message: 'user signing up',
+      customTags: 'auth',
+    });
+
     const { email, password, firstName, lastName, major, graduationYear } = appUserSignupRequest;
 
     const appUserFromEmail: AppUser = await this.appUserService.getAppUserByEmail(email);

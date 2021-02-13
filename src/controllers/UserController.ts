@@ -34,6 +34,7 @@ import {
 import { AppUserMapper, AppUserMapperImpl } from '@Mappers';
 import { InducteeAuthMiddleware, MemberAuthMiddleware, OfficerAuthMiddleware } from '@Middlewares';
 import { formatISO } from 'date-fns';
+import logger from '../logging';
 
 @JsonController('/api/users')
 export class UserController {

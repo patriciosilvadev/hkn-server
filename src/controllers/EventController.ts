@@ -45,6 +45,7 @@ import {
   RSVPMapperImpl,
 } from '@Mappers';
 import { OfficerAuthMiddleware } from '@Middlewares';
+import logger from '../logging';
 
 @JsonController('/api/events')
 export class EventController {
@@ -75,6 +76,11 @@ export class EventController {
     @QueryParams() multipleEventQuery: MultipleEventQuery,
     @CurrentUser() appUser: AppUser
   ): Promise<MultipleEventResponse | undefined> {
+    logger.info({
+      message: 'getting all events',
+      customTags: 'event',
+    });
+
     let isOfficer = true;
 
     // Check if user is an officer to see if we should show pending events to them
@@ -94,6 +100,11 @@ export class EventController {
   @Get('/:eventID')
   @ResponseSchema(EventResponse)
   async getEvent(@Param('eventID') eventID: number): Promise<EventResponse> {
+    logger.info({
+      message: 'getting event ' + eventID,
+      customTags: 'event',
+    });
+
     const event = await this.eventService.getEventById(eventID);
     if (event === undefined) {
       return undefined;

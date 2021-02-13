@@ -6,15 +6,19 @@ export class TeapotController {
   @Get('/')
   @HttpCode(418)
   async getEvent(): Promise<string> {
-    logger.log({
-      level: 'info',
-      message: 'teapot info',
-      tags: 'testing',
+    logger.debug({
+      message: 'debug teapot',
+      customTags: 'teapot',
     });
-    logger.log({
-      level: 'debug',
-      message: 'teapot info',
-      tags: 'testing',
+
+    logger.warn({
+      message: 'info teapot',
+      customTags: 'teapot',
+    });
+
+    logger.error({
+      message: 'error teapot',
+      customTags: 'teapot',
     });
     return 'I am a teapot!';
   }
