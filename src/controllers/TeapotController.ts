@@ -1,5 +1,5 @@
 import { JsonController, Get, HttpCode } from 'routing-controllers';
-import logger from '../logging';
+import logger from '@Logger';
 
 @JsonController('/api/teapot')
 export class TeapotController {
