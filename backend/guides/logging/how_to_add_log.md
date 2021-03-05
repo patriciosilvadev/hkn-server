@@ -20,12 +20,13 @@ Then to use it, do
 logger.log({
   level: 'debug',
   message: 'teapot info',
-  customTags: 'testing',
+  customTags1: 'tag1 label',
+  customTags2: 'tag2 label',
 });
 ```
 
 The level can be one of the four levels specified in logging.ts, error, warn, info, debug (ordered from most severe to least severe). Message is the message we
-want to log. CustomTags can be added for filtering in datadog.
+want to log. CustomTags can be added for filtering in datadog. Multiple tags can be added as shown in the example.
 
 ## Datadog Guide:
 
