@@ -33,4 +33,7 @@ want to log. CustomTags can be added for filtering in datadog. Multiple tags can
 To filter by custom tags, we need to add a facet. The easiest way I found is to first serach for the log message that got logged.
 ![datadog](datadog.png)
 
+Note that the tag would not be indexed if the facet is created after the log is processed, which means if we add a facet after the message gots logged, the
+message can't be filtered using the tag, but future messages with the tag can be filtered.
+
 After that we would be able to filter by selecting the tags we want.
