@@ -14,7 +14,8 @@ export class TeapotController {
     logger.log({
       level: 'debug',
       message: 'teapot info',
-      customTags: 'testing',
+      customTags1: 'tag1 testing',
+      customTags2: 'tag2 testing',
     });
     return 'I am a teapot!';
   }
